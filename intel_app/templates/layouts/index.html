@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block content %}
+
+  <header>
+    {% include 'inc/header.html' %}
+    <div class="page-banner home-banner">
+      <div class="container h-100">
+        <div class="row align-items-center h-100">
+          <div class="col-lg-6 py-3 wow fadeInUp">
+            <h1 class="mb-4">Welcome to SPFast</h1>
+            <p class="text-lg mb-5">Your number one online store for MTN and AIRTELTIGO</p>
+            <a href="{% url 'services' %}" class="btn btn-outline-primary mb-3">See Services</a>
+          </div>
+          <div class="col-lg-6 py-3 wow zoomIn">
+            <div class="img-place">
+              <lottie-player src="https://lottie.host/40dd1e38-95f7-49f2-8316-bff0b49831fa/btKhnsHEco.json"  background="transparent"  speed="1"  style="width: 350px; height: 350px;"  loop  autoplay></lottie-player>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>  
+  
+
+  <main>
+  
+          <div style="border-top: 0px solid #90A3C7" class="page-section">
+            <div class="container">
+              <div class="text-center wow fadeInUp">
+                <div class="subhead">Why Choose Us</div>
+                <h2 class="title-section">Your <span class="marked">Satisfaction</span> is Our Priority</h2>
+                <div class="divider mx-auto"></div>
+              </div>
+        
+              <div class="row mt-5 text-center">
+                <div class="col-lg-4 py-3 wow fadeInUp">
+                  <i style="color: #4E5768" class="fa-solid fa-tachometer fa-2x"></i>
+                  <h5>Exceptional Performance</h5>
+                  <p>We consistently deliver top-tier performance across all our services.</p>
+                </div>
+                <div class="col-lg-4 py-3 wow fadeInUp">
+                  <i style="color: #4E5768" class="fa-solid fa-dollar-sign fa-2x"></i>
+                  <h5>Competitive Pricing</h5>
+                  <p>Our prices stand out as the most competitive in the market.</p>
+                </div>
+                <div class="col-lg-4 py-3 wow fadeInUp">
+                  <i style="color: #4E5768" class="fa-solid fa-hands-helping fa-2x"></i>
+                  <h5>Client-Centric Support</h5>
+                  <p>Our unwavering commitment means your needs are always our priority. Your inquiries and concerns receive our utmost attention.</p>
+                </div>
+              </div>
+            </div> <!-- .container -->
+          </div> <!-- .page-section -->
+  
+  
+    <div class="page-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 py-3 wow fadeInLeft">
+            <h2 class="title-section">Our Services <span class="marked">are always</span> Reliable</h2>
+            <div class="divider"></div>
+            <p class="mb-5">Absolutely! Our commitment lies in swift and efficient service delivery. You can rely on us to expedite your needs with precision and dedication, ensuring your satisfaction within the shortest conceivable timeframe.</p>
+            <a href="#" class="btn btn-outline-primary ml-2">See pricing</a>
+          </div>
+          <div class="col-lg-6 py-3 wow zoomIn">
+            <div class="img-place text-center">
+              <lottie-player src="https://lottie.host/3aa82f73-4898-498e-9964-718c199eb464/fBUn2VuFb8.json"  background="transparent"  speed="1"  style="width: 350px; height: 350px;"  loop  autoplay></lottie-player>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- .page-section -->
+
+  
+    <div class="page-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 py-3 wow fadeInUp">
+            <div class="img-place text-center">
+                            <lottie-player src="https://lottie.host/271b02f5-2388-4407-a408-df6882182e01/mDjddKg4FA.json"  background="transparent"  speed="1"  style="width: 350px; height: 350px;"  loop  autoplay></lottie-player>
+            </div>
+          </div>
+          <div class="col-lg-6 py-3 wow fadeInUp">
+            <h2 class="title-section">Get in Touch</h2>
+            <div class="divider"></div>
+            <p>We'll get to you shortly.<br> We look forward to hearing from you!</p>
+  
+            <ul class="contact-list">
+              <li>
+                <div class="icon"><span class="mai-mail"></span></div>
+                <div class="content"><a href="mailto:drsamuelantwi@gmail.com">drsamuelantwi@gmail.com</a></div>
+              </li>
+              <li>
+                <div class="icon"><span class="mai-phone-portrait"></span></div>
+                <div class="content"><a href="tel:+233505169883">+233 50 516 9883</a></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- .page-section -->
+  
+  </main>
+
+  {% include 'inc/footer.html' %}
+
+  {% endblock%}
