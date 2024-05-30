@@ -31,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'drsammyonline.com',
     'www.drsammyonline.com',
+    'spfast-ielkg.ondigitalocean.app',
     '127.0.0.1'
 ]
 
