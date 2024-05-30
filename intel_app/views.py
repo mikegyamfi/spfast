@@ -595,84 +595,84 @@ def mtn_mark_completed(request, pk, status):
                 messages.success(request, f"Transaction Completed")
         return redirect('mtn_admin')
 
-# def populate_custom_users_from_excel(request):
-#     # Read the Excel file using pandas
-#     if request.method == 'POST':
-#         form = UploadFileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             excel_file = request.FILES['file']
-#
-#             # Process the uploaded Excel file
-#             df = pd.read_excel(excel_file)
-#             counter = 0
-#             # Iterate through rows to create CustomUser instances
-#             for index, row in df.iterrows():
-#                 print(counter)
-#                 # Create a CustomUser instance for each row
-#                 custom_user = CustomUser.objects.create(
-#                     first_name=row['first_name'],
-#                     last_name=row['last_name'],
-#                     username=str(row['username']),
-#                     email=row['email'],
-#                     phone=row['phone'],
-#                     wallet=float(row['wallet']),
-#                     status=str(row['status']),
-#                     password1=row['password1'],
-#                     password2=row['password2'],
-#                     is_superuser=row['is_superuser'],
-#                     is_staff=row['is_staff'],
-#                     is_active=row['is_active'],
-#                     password=row['password']
-#                 )
-#
-#                 custom_user.save()
-#
-#                 # group_names = row['groups'].split(',')  # Assuming groups are comma-separated
-#                 # groups = Group.objects.filter(name__in=group_names)
-#                 # custom_user.groups.set(groups)
-#                 #
-#                 # if row['user_permissions']:
-#                 #     permission_ids = [int(pid) for pid in row['user_permissions'].split(',')]
-#                 #     permissions = Permission.objects.filter(id__in=permission_ids)
-#                 #     custom_user.user_permissions.set(permissions)
-#                 print("killed")
-#                 counter = counter+1
-#             messages.success(request, 'All done')
-#     else:
-#         form = UploadFileForm()
-#     return render(request, 'layouts/import_users.html', {'form': form})
+def populate_custom_users_from_excel(request):
+    # Read the Excel file using pandas
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            excel_file = request.FILES['file']
+
+            # Process the uploaded Excel file
+            df = pd.read_excel(excel_file)
+            counter = 0
+            # Iterate through rows to create CustomUser instances
+            for index, row in df.iterrows():
+                print(counter)
+                # Create a CustomUser instance for each row
+                custom_user = CustomUser.objects.create(
+                    first_name=row['first_name'],
+                    last_name=row['last_name'],
+                    username=str(row['username']),
+                    email=row['email'],
+                    phone=row['phone'],
+                    wallet=float(row['wallet']),
+                    status=str(row['status']),
+                    password1=row['password1'],
+                    password2=row['password2'],
+                    is_superuser=row['is_superuser'],
+                    is_staff=row['is_staff'],
+                    is_active=row['is_active'],
+                    password=row['password']
+                )
+
+                custom_user.save()
+
+                # group_names = row['groups'].split(',')  # Assuming groups are comma-separated
+                # groups = Group.objects.filter(name__in=group_names)
+                # custom_user.groups.set(groups)
+                #
+                # if row['user_permissions']:
+                #     permission_ids = [int(pid) for pid in row['user_permissions'].split(',')]
+                #     permissions = Permission.objects.filter(id__in=permission_ids)
+                #     custom_user.user_permissions.set(permissions)
+                print("killed")
+                counter = counter+1
+            messages.success(request, 'All done')
+    else:
+        form = UploadFileForm()
+    return render(request, 'layouts/import_users.html', {'form': form})
 
 
-# def delete_custom_users(request):
-#     CustomUser.objects.all().delete()
-#     return HttpResponseRedirect('Done')
+def delete_custom_users(request):
+    CustomUser.objects.all().delete()
+    return HttpResponseRedirect('Done')
 
 
-# def send_change_sms(request):
-#     sms_headers = {
-#         'Authorization': 'Bearer 1334|wroIm5YnQD6hlZzd8POtLDXxl4vQodCZNorATYGX',
-#         'Content-Type': 'application/json'
-#     }
-#
-#     sms_url = 'https://webapp.usmsgh.com/api/sms/send'
-#
-#     all_users = CustomUser.objects.all()
-#     counter = 0
-#
-#     for user in all_users:
-#         sleep(1)
-#         sms_message = f"Hello {user.username},\nGH Bay has changed its website to https://www.ghbays.com\nYou do not need to create a new account for this. Just log in and start transacting\nAll wallet balance are intact."
-#
-#         sms_body = {
-#             'recipient': f"233{user.phone}",
-#             'sender_id': 'GH BAY',
-#             'message': sms_message
-#         }
-#
-#         response = requests.request('POST', url=sms_url, params=sms_body, headers=sms_headers)
-#         print(response.text)
-#         counter = counter+1
-#         print(counter)
-#         print("killed")
-#     messages.success(request, "ALL DONE")
-#     return redirect('home')
+def send_change_sms(request):
+    sms_headers = {
+        'Authorization': 'Bearer 1334|wroIm5YnQD6hlZzd8POtLDXxl4vQodCZNorATYGX',
+        'Content-Type': 'application/json'
+    }
+
+    sms_url = 'https://webapp.usmsgh.com/api/sms/send'
+
+    all_users = CustomUser.objects.all()
+    counter = 0
+
+    for user in all_users:
+        sleep(1)
+        sms_message = f"Hello {user.username},\nGH Bay has changed its website to https://www.ghbays.com\nYou do not need to create a new account for this. Just log in and start transacting\nAll wallet balance are intact."
+
+        sms_body = {
+            'recipient': f"233{user.phone}",
+            'sender_id': 'GH BAY',
+            'message': sms_message
+        }
+
+        response = requests.request('POST', url=sms_url, params=sms_body, headers=sms_headers)
+        print(response.text)
+        counter = counter+1
+        print(counter)
+        print("killed")
+    messages.success(request, "ALL DONE")
+    return redirect('home')
