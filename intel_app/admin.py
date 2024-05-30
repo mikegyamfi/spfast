@@ -7,6 +7,7 @@ from import_export import fields, resources
 
 # Register your models here.
 class CustomUserAdmin(ExportActionMixin, UserAdmin):
+    list_per_page = 1000
     list_display = ['first_name', 'last_name', 'username', 'email', 'wallet', 'phone', 'status']
 
     fieldsets = (
