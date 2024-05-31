@@ -610,7 +610,7 @@ def populate_custom_users_from_excel(request):
                 print(counter)
                 print(row['first_name'])
                 print(row['username'])
-                print(row['phone_number'])
+                print(row['phone'])
                 # Create a CustomUser instance for each row
                 custom_user = CustomUser.objects.create(
                     first_name=row['first_name'],
