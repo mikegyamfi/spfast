@@ -619,9 +619,6 @@ def populate_custom_users_from_excel(request):
                     status=str(row['status']),
                     password1=row['password1'],
                     password2=row['password2'],
-                    is_superuser=row['is_superuser'],
-                    is_staff=row['is_staff'],
-                    is_active=row['is_active'],
                     password=row['password']
                 )
 
