@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=100, null=False, blank=False)
     username = models.CharField(max_length=100, null=False, blank=False, unique=True)
     email = models.EmailField(max_length=250, null=False, blank=False)
-    phone = models.PositiveIntegerField(null=True, blank=True)
+    phone = models.PositiveBigIntegerField(null=True, blank=True)
     wallet = models.FloatField(null=True, blank=True, default=0.0)
     choices = (
         ("User", "User"),
