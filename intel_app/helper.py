@@ -40,56 +40,56 @@ def top_up_ref_generator():
     return f"{now_time}{secret}".upper()
 
 
-def send_bundle(receiver, bundle_amount, reference):
-    url = "https://controller.geosams.com/api/v1/new_transaction"
-    print(receiver, bundle_amount, reference)
-
-    payload = json.dumps({
-        "account_number": receiver,
-        "reference": reference,
-        "bundle_amount": bundle_amount
-    })
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': config('TOKEN')
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-    print(response.text)
-    return response
-    # url = "https://console.bestpaygh.com/api/flexi/v1/new_transaction/"
-    #
-    # headers = {
-    #     "api-key": "GP9CZSAISV1G7H$DS37E01M-KC-VOVLX",
-    #     "api-secret": "7KK6KXBAJSJGY6R5YT5HFX654HNNAMJ40BHE1M1716JZR-I6YQ4TA6GB3K$A2IX9",
-    #     'Content-Type': 'application/json'
-    # }
-    #
-    # print("====================================")
-    # print(user.phone)
-    # print(user.first_name)
-    # print(user.last_name)
-    # print(user.email)
-    # print(receiver)
-    # print(reference)
-    # print(bundle_amount)
-    # print("=====================================")
+def send_bundle(user, receiver, bundle_amount, reference):
+    # url = "https://controller.geosams.com/api/v1/new_transaction"
+    # print(receiver, bundle_amount, reference)
     #
     # payload = json.dumps({
-    #     "first_name": user.first_name,
-    #     "last_name": user.last_name,
-    #     "account_number": f"0{user.phone}",
-    #     "receiver": receiver,
-    #     "account_email": "drsamuelantwi@gmail.com",
+    #     "account_number": receiver,
     #     "reference": reference,
     #     "bundle_amount": bundle_amount
     # })
-    # print("------------------------------------")
+    # headers = {
+    #     'Content-Type': 'application/json',
+    #     'Authorization': config('TOKEN')
+    # }
+    #
     # response = requests.request("POST", url, headers=headers, data=payload)
-    # print("yeah")
-    # print(response.json)
+    #
+    # print(response.text)
     # return response
+    url = "https://console.bestpaygh.com/api/flexi/v1/new_transaction/"
+
+    headers = {
+        "api-key": config("API_KEY"),
+        "api-secret": config("API_SECRET"),
+        'Content-Type': 'application/json'
+    }
+
+    print("====================================")
+    print(user.phone)
+    print(user.first_name)
+    print(user.last_name)
+    print(user.email)
+    print(receiver)
+    print(reference)
+    print(bundle_amount)
+    print("=====================================")
+
+    payload = json.dumps({
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "account_number": f"0{user.phone}",
+        "receiver": receiver,
+        "account_email": "drsamuelantwi@gmail.com",
+        "reference": reference,
+        "bundle_amount": bundle_amount
+    })
+    print("------------------------------------")
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print("yeah")
+    print(response.json)
+    return response
 
 
 def verify_paystack_transaction(reference):
